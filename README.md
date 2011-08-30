@@ -5,7 +5,7 @@ Smarter record and variant type inference
 -----------------------------------------
 
 Converting between from one record type to another happens a lot
-and illustrated by the example below:
+and is illustrated by the example below:
 
 ```ocaml
 module Foobar =
@@ -39,12 +39,13 @@ Error: This expression has type Foobar.xy
        but an expression was expected of type Barfoo.xyz
 ```
 
-Knowing that `a` was annotated by the user with type `Foobar.a`,
+Knowing that `a` was annotated by the user with type `Foobar.xy`,
 the compiler should allow the expression `a.x`. Instead,
 it looks for the latest definition of field `x`, which is provided
 via `open Barfoo` and is the wrong type.
 
 Currently the fix consists in writing:
+
 ```ocaml
 let b_of_a a =
   {
