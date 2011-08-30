@@ -4,7 +4,7 @@ OCaml wishlist
 Smarter record and variant type inference
 -----------------------------------------
 
-Converting between from one record type to another happens a lot
+Converting from one record type to another happens a lot
 and is illustrated by the example below:
 
 ```ocaml
