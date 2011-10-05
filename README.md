@@ -106,9 +106,10 @@ Error messages could be adapted and improved. These typical errors occur:
   record type, then it is checked for types that contain all the remaining
   fields, and the missing fields are suggested.
 * plain confusion: if some fields exist in different record types,
-  all these possible record types are suggested.
-* no field exists: explicit module path syntax or `open` are suggested
-  (even better: suggest modules that provide a compatible record type)
+  all these possible record types should be suggested.
+* no field exists: explicit module path syntax or `open` should be suggested
+  (even better: suggest the actual modules that provide a compatible
+  record type)
 
 Similar error-reporting rules can be established for record patterns
 and simple field access with the dot notation, taking into account that
