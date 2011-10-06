@@ -135,14 +135,14 @@ for it to make it into standard OCaml.
 Generic print function
 ----------------------
 
-We would like a function that takes any OCaml value and prints it like in the
-toplevel.
+We would like a function that takes any OCaml value and prints it 
+as well as it can like in the toplevel.
 
 ```ocaml
 val to_string : ?full: bool -> 'a -> string
   (** Produce a human-readable representation of an OCaml value.
       @param full if true, the value must be printed in full.
-                  By default, long values may be truncated using [...]
+                  By default, long values may be truncated using [...].
   *)
 
 val print : ?full: bool -> 'a -> unit
