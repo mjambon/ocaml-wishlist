@@ -150,6 +150,7 @@ val print : ?full: bool -> 'a -> unit
 ```
 
 Details:
+
 * it would print functions as `<fun>`
 * it would print abstract values as `<abstract>`
 * polymorphic values such as the elements of an `'a list`
