@@ -130,3 +130,37 @@ that provide the modules.
 [OCamlPro/ocaml-namespaces](https://github.com/OCamlPro/ocaml-namespaces)
 looks like it implements just what we need and we are all waiting impatiently
 for it to make it into standard OCaml.
+
+
+Generic print function
+----------------------
+
+We would like a function that takes any OCaml value and prints it like in the
+toplevel.
+
+```ocaml
+val to_string : ?full: bool -> 'a -> string
+  (** Produce a human-readable representation of an OCaml value.
+      @param full if true, the value must be printed in full.
+                  By default, long values may be truncated using [...]
+  *)
+
+val print : ?full: bool -> 'a -> unit
+  (** [print x] is the same as [print_endline (to_string x)]. *)
+```
+
+Details:
+* it would print functions as `<fun>`
+* it would print abstract values as `<abstract>`
+* polymorphic values such as the elements of an `'a list`
+  could be either rejected at compile time or printed as `<poly>`.
+
+In terms of implementation, we understand that a
+representation of the type should be available at runtime, which
+is not currently the case. Since we don't want to modify the current runtime,
+the representation of the type would not be a subfield of a value.
+As a consequence, `to_string` and `print` would require a special treatment
+by the compiler. Much like `assert` expands into something containing
+its location, `to_string x` would expand into something like
+`unsafe_to_string (typeof x) x`. The special `typeof` construct 
+may or may not be accessible directly by the user for further applications.
