@@ -159,9 +159,10 @@ Details:
 In terms of implementation, we understand that a
 representation of the type should be available at runtime, which
 is not currently the case. Since we don't want to modify the current runtime,
-the representation of the type would not be a subfield of a value.
+the representation of the type would not be a subfield of the value
+to be printed.
 As a consequence, `to_string` and `print` would require a special treatment
 by the compiler. Much like `assert` expands into something containing
 its location, `to_string x` would expand into something like
 `unsafe_to_string (typeof x) x`. The special `typeof` construct 
-may or may not be accessible directly by the user for further applications.
+may or may not be made available to the user for further applications.
